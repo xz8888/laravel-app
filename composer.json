@@ -2,9 +2,9 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"jasonlewis/basset": "*",
-		"twitter/bootstrap": "dev-3.0.*",
 		"robclancy/presenter": "dev-master",
-		"way/generators": "dev-master"	 
+		"cartalyst/sentry": "2.0.*",
+		"way/generators": "1.0.*"
 	},
 	"autoload": {
 		"classmap": [

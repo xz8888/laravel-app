@@ -3,7 +3,7 @@
 		<div class="row">
 <?php
 
-// die(var_dump($errors));
+die(var_dump($errors));
 if(count($errors->messages)) {
 	echo "<div class=\"alert alert-error\"><h2>".Lang::line('common.error_message')."</h2>";
 	foreach($errors->messages as $messages){

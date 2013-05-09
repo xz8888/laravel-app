@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{{ __("common.title") }} - {{ isset($title) ? $title : __("common.title default") }} </title>
+    <title>{{ trans("common.title") }} - {{ isset($title) ? $title : trans("common.title default") }} </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     {{ render('layouts.header.scripts'); }}

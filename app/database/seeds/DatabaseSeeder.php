@@ -9,9 +9,12 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+        //Create the group seed
+        $this->call('GroupTableSeeder');
+        $this->command->info('Group table Seeded'); 
+	    $this->call('UserTableSeeder');
+	    $this->command->info('User table seeded!');
 	}
 
 }

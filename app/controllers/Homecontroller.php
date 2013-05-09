@@ -30,14 +30,15 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function action_index()
+	public function index()
 	{
 		//pagination applications
-		$applications = DB::table('applications')->order_by('id', 'desc')->paginate(20);
+		$applications = DB::table('applications')->orderBy('id', 'desc')->paginate(20);
+
 		return View::make('home.index', array('applications' => $applications));
 	}
 	
-	public function action_message(){
+	public function message(){
 		return View::make('home.message');
 	}
 

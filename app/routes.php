@@ -39,38 +39,7 @@ Route::get('/',
 	)
 );
 
-
-Route::filter('auth', function()
-{
-	if (Auth::guest()) return Redirect::to('login');
-});
-
-/**
- * Currently check if user is in the admin group
- */
-Route::filter('admin', function(){
-	if (!Sentry::check()){
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
-	    return Redirect::to('user/login');
+Route::get('test', function(){
+    return View::make('home.hello');
 	}
-	
-	$user = Sentry::user();
-	if(!$user->in_group('admin')){
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
-		return Redirect::to('user/login');
-	}
-});
-
-Route::filter('user', function(){
-	if(!Sentry::check()){
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
-		return Redirect::to('user/login');
-	}
-
-	$user = Sentry::user();
-	if(!$user->in_group('user')) {
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
-		return Redirect::to('user/login');
-	}
-	
-});
+);

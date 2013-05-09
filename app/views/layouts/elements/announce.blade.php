@@ -3,9 +3,9 @@
 	   <div class="span12">
 	       <div class="wrap clearfix">
 		        <div class="meta .juzi-grey-block juzi-font-color ">
-		            <i class="icon-volume-up"></i><span>{{ __('common.announcement') }}</span>
+		            <i class="icon-volume-up"></i><span>{{ trans('common.announcement') }}</span>
 		        </div>	
-		         <p class="headline">{{ __('common.headlines') }}</p>
+		         <p class="headline">{{ trans('common.headlines') }}</p>
 		    </div>
 	    </div>
     </div>

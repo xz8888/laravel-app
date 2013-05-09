@@ -1,16 +1,16 @@
 <table class="table table-bordered table-striped">
    <tr>
-       <th>{{ __('immigration.type') }}</th>
-       <th>{{ __('immigration.sent') }}</th>
-       <th>{{ __('immigration.co') }}</th>
-       <th>{{ __('immigration.fn') }}</th>  
-       <th>{{ __('immigration.me') }}</th>  
-       <th>{{ __('immigration.mes') }}</th>
-       <th>{{ __('immigration.mer') }}</th>
-       <th>{{ __('immigration.pr') }}</th>
-       <th>{{ __('immigration.office') }}</th>
+       <th>{{ trans('immigration.type') }}</th>
+       <th>{{ trans('immigration.sent') }}</th>
+       <th>{{ trans('immigration.co') }}</th>
+       <th>{{ trans('immigration.fn') }}</th>  
+       <th>{{ trans('immigration.me') }}</th>  
+       <th>{{ trans('immigration.mes') }}</th>
+       <th>{{ trans('immigration.mer') }}</th>
+       <th>{{ trans('immigration.pr') }}</th>
+       <th>{{ trans('immigration.office') }}</th>
    </tr>
-   @foreach ($applications->results as $app)
+   @foreach ($applications as $app)
    <tr>
       <td>
          {{ $app->type }}

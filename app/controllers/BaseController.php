@@ -10,28 +10,9 @@ class BaseController extends Controller {
 	 * @return Response
 	 */
 	
-	public function __construct(){
-		
-		
-		Asset::container('header')->add('juzi', 'css/juzi.css');
-		Asset::container('header')->add('awesome', 'css/font-awesome.min.css');
-		
-		$class = get_called_class();
-
-		switch($class){
-			case 'Admin_Controller':
-				$this->filter('before', 'admin');
-				break;
-			case 'User_Controller':
-				$this->filter('before', 'user')
-				     ->except(array('login', 'register', 'forgetpassword', 'resetpassword', 'logout'));
-				break;
-		}
-	}
-	
 	public function __call($method, $parameters)
 	{
-		return Response::error('404');
+		return App::abort('404');
 	}
 	
 	/**

@@ -52,7 +52,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'cn',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -112,6 +112,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
+		/** additional Service provider **/
+		'Basset\BassetServiceProvider',
+		'Cartalyst\Sentry\SentryserviceProvider',
 
 	),
 
@@ -177,6 +181,10 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+
+		/** Additional Aliance **/
+		'Basset'          => 'Basset\Facade',
+		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry'
 
 	),
 
