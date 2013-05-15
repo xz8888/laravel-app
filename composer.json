@@ -3,6 +3,7 @@
 		"laravel/framework": "4.0.*",
 		"jasonlewis/basset": "*",
 		"robclancy/presenter": "dev-master",
+		"kriswallsmith/assetic": "*",
 		"cartalyst/sentry": "2.0.*",
 		"way/generators": "1.0.*"
 	},

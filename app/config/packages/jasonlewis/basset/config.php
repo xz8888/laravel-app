@@ -27,6 +27,19 @@ return array(
     */
 
     'collections' => array(
+        
+        'bootstrap' => function($collection){
+            
+            $collection->add('bootstrap/css/bootstrap.min.css');
+            $collection->add('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+            $collection->add('bootstrap/js/bootstrap.min.js');
+        },
+
+        'otherlibs' => function($collection){
+           
+            $collection->requireDirectory('css');
+            $collection->requireDirectory('js');
+        },
 
         'application' => function($collection)
         {
