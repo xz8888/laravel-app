@@ -1,4 +1,4 @@
-@layout('layouts.juzi_common')
+@extends('layouts.juzi_common')
 
 @section('content')
-@endsection
+@stop

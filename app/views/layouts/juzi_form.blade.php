@@ -9,11 +9,13 @@
     <title>{{ trans("common.title") }} - {{ isset($title) ? $title : trans("common.title default") }} </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    {{ render('layouts.header.scripts'); }}
+    @include('layouts.header.scripts')
 </head>
 <body>
-   {{ render('layouts.header.navigation')}}
-   @yield('content');
+    @include('layouts.header.navigation')
+    @include('layouts.elements.message') 
+    
+    @yield('content')
    
-   {{ render('layouts.footer.footer'); }}
+    @include('layouts.footer.footer')
 </body>

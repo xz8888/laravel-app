@@ -13,6 +13,7 @@ return array(
 	'activiate message' =>'谢谢您注册橘子社区',
 	'activaite success' => '注册成功',
 	'activiate code'    => '您的注册信息已经发送到你的邮箱了',
-	'setting'           => '账户设置'
+	'setting'           => '账户设置',
+	'logout'            => '注销'
 	
 );

@@ -47,6 +47,32 @@ return array(
 	*/
 
 	'hasher' => 'native',
+  
+	/*
+	|--------------------------------------------------------------------------
+	| Cookie
+	|--------------------------------------------------------------------------
+	|
+	| Configuration specific to the cookie component of Sentry.
+	|
+	*/
+
+	'cookie' => array(
+    
+		/*
+		|--------------------------------------------------------------------------
+		| Default Cookie Key
+		|--------------------------------------------------------------------------
+		|
+		| This option allows you to specify the default cookie key used by Sentry.
+		|
+		| Supported: string
+		|
+		*/
+  
+		'key' => 'cartalyst_sentry',  
+  
+ 	),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,6 +82,7 @@ return array(
 	| Configuration specific to the group management component of Sentry.
 	|
 	*/
+
 	'groups' => array(
 
 		/*
@@ -80,6 +107,7 @@ return array(
 	| Configuration specific to the user management component of Sentry.
 	|
 	*/
+
 	'users' => array(
 
 		/*
@@ -118,6 +146,7 @@ return array(
 	| enables limiting of login attempts and the suspension & banning of users.
 	|
 	*/
+
 	'throttling' => array(
 
 		/*

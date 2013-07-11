@@ -1,11 +1,14 @@
 {
 	"require": {
 		"laravel/framework": "4.0.*",
-		"jasonlewis/basset": "*",
+		"leafo/lessphp": "*",
+		"jasonlewis/basset": "4.0.*",
 		"robclancy/presenter": "dev-master",
 		"kriswallsmith/assetic": "*",
 		"cartalyst/sentry": "2.0.*",
-		"way/generators": "1.0.*"
+		"way/generators": "dev-master",
+		"mews/purifier": "dev-master",
+		"loic-sharma/profiler": "1.1.*"
 	},
 	"autoload": {
 		"classmap": [

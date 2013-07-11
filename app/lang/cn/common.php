@@ -20,7 +20,11 @@ return array(
 	'city other'     =>  'Others - 其他',
 		
     /***** common definition for interface ***/
-	'label submit'         => '提交',
-	'error_message'   => '错误信息',
-	'my_application'  => '我的移民申请'
+	'label submit'   => '提交',
+	'error_message'  => '错误信息',
+	'my_application' => '我的移民申请',
+
+	/****** Tags ****/
+	'tags'           => '标签',
+	'submit'         => '提交'
 );

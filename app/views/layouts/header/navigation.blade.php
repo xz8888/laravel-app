@@ -7,7 +7,7 @@
 		  <ul class="nav nav-pills pull-right">
 			 <?php 
 			  if(Sentry::check()):
-			     $user = Sentry::user();
+			     $user = Sentry::getUser();
 			  ?>
 			  <li class="dropdown pull-right">
 			      <a href="/user/my" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-user"></i>{{ $user->username; }}</a>
@@ -18,7 +18,11 @@
 			          <li>
 			             <a href="/user/edit"><i class="icon-folder-close"></i>{{ trans('common.my_application') }}</a>
 			          </li>
+
 			      </ul>
+			  </li>
+			  <li>
+			       <a href="/user/logout"><i class="icon-folder-close"></i>{{ trans('user.logout') }}</a>
 			  </li>
 			  <?php else:?>
 			  <li><a href="/user/login"><i class="icon-user"></i>{{ trans('user.login') }}</a></li>

@@ -4,7 +4,7 @@
 <?php
 
 if($errors->count()) {
-	echo "<div class=\"alert alert-error\"><h2>".Lang::line('common.error_message')."</h2>";
+	echo "<div class=\"alert alert-error\"><h2>".Lang::get('common.error_message')."</h2>";
 	foreach($errors->getMessages() as $messages){
 		foreach($messages as $message)
 			echo "<p>$message</p>";

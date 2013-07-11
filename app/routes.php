@@ -39,6 +39,23 @@ Route::get('/',
 	)
 );
 
+
+/************** Router for questions begin ************/
+Route::resource('question', 'QuestionController', array('only' => array('index', 'show')));
+Route::get('question-create', array('uses' => 'QuestionController@create', 'before' => 'user'));
+Route::post('question-store', array('uses' => 'QuestionController@store', 'before' => 'user|csrf'));
+Route::post('question-reply', array('uses' => 'QuestionController@reply', 'before' => 'user|csrf'));
+/************** Router for questions end *************/
+
+/************** User Route *************/
+Route::any('user/login', array('uses' => 'UserController@login', 'before' => 'loggedUser'));
+Route::any('user/register', array('uses' => 'UserController@register'));
+Route::any('user/logout', array('uses' => 'UserController@logout'));
+Route::get('share', array('uses' => 'ApplicationController@share', 'before' => 'user'));
+Route::post('share', array('uses' => 'ApplicationController@share', 'before' => 'user|csrf'));
+/************** End User Route *********/
+
+
 Route::get('test', function(){
     return View::make('home.hello');
 	}

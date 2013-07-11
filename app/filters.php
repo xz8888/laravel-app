@@ -95,16 +95,28 @@ Route::filter('admin', function(){
 	}
 });
 
+
 Route::filter('user', function(){
+    
 	if(!Sentry::check()){
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
-		return Redirect::to('user/login');
+		Session::flash("messages",array(Lang::get('user.invalid_login')));
+		return Redirect::guest('user/login'); 
 	}
 
-	$user = Sentry::user();
-	if(!$user->in_group('user')) {
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
-		return Redirect::to('user/login');
+	$user = Sentry::getUser();
+    $userGroup = Sentry::getGroupProvider()->findByName('Users');
+
+	if(!$user->inGroup($userGroup)) {
+		Session::flash("messages",array(Lang::get('user.invalid_login')));
+		return Redirect::guest('user/login');
 	}
-	
+});
+
+//Check if user has logged, if is logged, redirect to previous page
+//the method is maintally used to prevent logged in user to go to login page
+Route::filter('loggedUser', function(){
+ 
+	if(Sentry::check()){
+	   return Redirect::home();
+	}
 });

@@ -12,16 +12,20 @@ class GroupTableSeeder extends Seeder {
 		Sentry::getGroupProvider()->create(array(
            'name' => 'Administrator',
            'permissions' => array(
-               'superuser' => 1,
-               'admin' => 1,
-               'users' => 1
+               'question.view' => 1,
+               'question.update' => 1,
+               'question.delete' => 1,
+               'question.create' => 1
            	)
 		));
 
 		Sentry::getGroupProvider()->create(array(
            'name' => 'Users',
            'permissions' => array(
-               'users' => 1
+               'question.view' => 1,
+               'question.update' => 1,
+               'question.delete' => 1,
+               'question.create' => 1
            	)
 		));
 	}

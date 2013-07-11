@@ -14,7 +14,7 @@ return array(
 	*/
 
 	'debug' => true,
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Application URL
@@ -116,6 +116,9 @@ return array(
 		/** additional Service provider **/
 		'Basset\BassetServiceProvider',
 		'Cartalyst\Sentry\SentryserviceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
+		'Mews\Purifier\PurifierServiceProvider',
+		'Profiler\ProfilerServiceProvider'
 
 	),
 
@@ -184,8 +187,9 @@ return array(
 
 		/** Additional Aliance **/
 		'Basset'          => 'Basset\Facade',
-		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry'
-
+		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Purifier'        => 'Mews\Purifier\Facades\Purifier',
+        'Profiler'        => 'Profiler\Facades\Profiler'
 	),
 
 );

@@ -14,7 +14,7 @@ return array(
     | A default "application" collection is ready for immediate use. It makes
     | a couple of assumptions about your directory structure.
     |
-    | /app
+    | /public
     |    /assets
     |        /stylesheets
     |            /less
@@ -25,28 +25,15 @@ return array(
     | You can overwrite this collection or remove it by publishing the config.
     |
     */
-
+    
     'collections' => array(
-        
-        'bootstrap' => function($collection){
-            
-            $collection->add('bootstrap/css/bootstrap.min.css');
-            $collection->add('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-            $collection->add('bootstrap/js/bootstrap.min.js');
-        },
-
-        'otherlibs' => function($collection){
-           
-            $collection->requireDirectory('css');
-            $collection->requireDirectory('js');
-        },
 
         'application' => function($collection)
         {
             // Switch to the stylesheets directory and require the "less" and "sass" directories.
             // These directories both have a filter applied to them so that the built
             // collection will contain valid CSS.
-            $directory = $collection->directory('../app/assets/stylesheets', function($collection)
+            $directory = $collection->directory('assets/stylesheets', function($collection)
             {
                 $collection->requireDirectory('less')->apply('Less');
                 $collection->requireDirectory('sass')->apply('Sass');
@@ -59,13 +46,29 @@ return array(
             // Switch to the javascripts directory and require the "coffeescript" directory. As
             // with the above directories we'll apply the CoffeeScript filter to the directory
             // so the built collection contains valid JS.
-            $directory = $collection->directory('../app/assets/javascripts', function($collection)
+            $directory = $collection->directory('assets/javascripts', function($collection)
             {
                 $collection->requireDirectory('coffeescripts')->apply('CoffeeScript');
                 $collection->requireDirectory();
             });
 
             $directory->apply('JsMin');
+        },
+
+         'bootstrap' => function($collection){
+            
+            $collection->add('bootstrap/css/bootstrap.min.css')->raw();
+            $collection->add('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+            $collection->add('bootstrap/js/bootstrap.min.js')->raw();
+
+            //add awesome font directory
+            $collection->add('font-awesome/font-awesome.min.css')->raw();
+        },
+
+        'otherlibs' => function($collection){
+           
+            $collection->requireDirectory('css')->raw();
+            $collection->requireDirectory('js')->raw();
         }
 
     ),
@@ -102,7 +105,19 @@ return array(
     |
     */
 
-    'build_path' => 'assets',
+    'build_path' => 'builds',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Debug
+    |--------------------------------------------------------------------------
+    |
+    | Enable debugging to have potential errors or problems encountered
+    | during operation logged to a rotating file setup.
+    |
+    */
+
+    'debug' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -180,9 +195,9 @@ return array(
             |
             */
 
-            'Less' => array('LessFilter', function($filter)
+            'Less' => array('LessphpFilter', function($filter)
             {
-                $filter->whenAssetIs('*.less')->findMissingConstructorArgs();
+                $filter->whenAssetIs('.*\.less')->findMissingConstructorArgs();
             }),
 
             /*
@@ -197,7 +212,7 @@ return array(
 
             'Sass' => array('Sass\ScssFilter', function($filter)
             {
-                $filter->whenAssetIs('*.(sass|scss)')->findMissingConstructorArgs();
+                $filter->whenAssetIs('.*\.(sass|scss)')->findMissingConstructorArgs();
             }),
 
             /*
@@ -212,7 +227,7 @@ return array(
 
             'CoffeeScript' => array('CoffeeScriptFilter', function($filter)
             {
-                $filter->whenAssetIs('*.coffee')->findMissingConstructorArgs();
+                $filter->whenAssetIs('.*\.coffee')->findMissingConstructorArgs();
             }),
 
             /*
@@ -227,7 +242,7 @@ return array(
 
             'CssMin' => array('CssMinFilter', function($filter)
             {
-                $filter->whenEnvironmentIs('production', 'prod')->whenClassExists('CssMin');
+                $filter->whenAssetIsStylesheet()->whenProductionBuild()->whenClassExists('CssMin');
             }),
 
             /*
@@ -240,9 +255,23 @@ return array(
             |
             */
 
-            'JsMin' => array('JsMinFilter', function($filter)
+            'JsMin' => array('JSMinFilter', function($filter)
             {
-                $filter->whenEnvironmentIs('production', 'prod')->whenClassExists('JsMin');
+                $filter->whenAssetIsJavascript()->whenProductionBuild()->whenClassExists('JSMin');
+            }),
+
+            /*
+            |--------------------------------------------------------------------------
+            | UriRewrite Filter Alias
+            |--------------------------------------------------------------------------
+            |
+            | Filter gets a default argument of the path to the public directory.
+            |
+            */
+
+            'UriRewriteFilter' => array('UriRewriteFilter', function($filter)
+            {
+                $filter->setArguments(public_path());
             })
 
         )
