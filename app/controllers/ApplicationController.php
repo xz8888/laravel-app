@@ -12,6 +12,7 @@ class ApplicationController extends BaseController {
       
       if(Request::getMethod() == 'POST'){
       
+          
       }
       else 
           return View::make('application.share');

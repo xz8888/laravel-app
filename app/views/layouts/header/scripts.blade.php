@@ -1,3 +1,3 @@
-{{ basset_stylesheets('bootstrap', 'otherlibs', 'application') }}
-{{ basset_javascripts( 'bootstrap', 'otherlibs', 'application') }}
+{{ basset_stylesheets('bootstrap', 'bootstrap-datepicker', 'otherlibs', 'application') }}
+{{ basset_javascripts('bootstrap', 'bootstrap-datepicker', 'otherlibs', 'application') }}
 

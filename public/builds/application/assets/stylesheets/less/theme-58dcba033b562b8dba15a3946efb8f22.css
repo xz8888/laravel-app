@@ -1,0 +1,13 @@
+a {
+  color: #424242;
+}
+a:hover {
+  color: #EF4423;
+}
+.navbar-orange,
+.navbar-inner {
+  background-color: #EF4423;
+}
+h1 {
+  color: #FFF;
+}

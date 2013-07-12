@@ -1,0 +1,23 @@
+{
+    "name": "test/test",
+    "description": "",
+    "authors": [
+        {
+            "name": "",
+            "email": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Test\\Test": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

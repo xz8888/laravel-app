@@ -65,8 +65,12 @@ return array(
             $collection->add('font-awesome/font-awesome.min.css')->raw();
         },
 
+        'bootstrap-datepicker' => function($collection){
+            $collection->add('bootstrap/css/datepicker.css')->raw();
+            $collection->add('bootstrap/js/bootstrap-datepicker.js')->raw();
+        },
+
         'otherlibs' => function($collection){
-           
             $collection->requireDirectory('css')->raw();
             $collection->requireDirectory('js')->raw();
         }
