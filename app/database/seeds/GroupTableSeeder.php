@@ -9,7 +9,9 @@ class GroupTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		Sentry::getGroupProvider()->create(array(
+		DB::table('groups')->delete();
+
+    Sentry::getGroupProvider()->create(array(
            'name' => 'Administrator',
            'permissions' => array(
                'question.view' => 1,

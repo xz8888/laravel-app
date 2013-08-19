@@ -118,7 +118,8 @@ return array(
 		'Cartalyst\Sentry\SentryserviceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Mews\Purifier\PurifierServiceProvider',
-		'Profiler\ProfilerServiceProvider'
+		'Profiler\ProfilerServiceProvider',
+		'DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider'
 
 	),
 
@@ -189,7 +190,8 @@ return array(
 		'Basset'          => 'Basset\Facade',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Purifier'        => 'Mews\Purifier\Facades\Purifier',
-        'Profiler'        => 'Profiler\Facades\Profiler'
+        'Profiler'        => 'Profiler\Facades\Profiler',
+        'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs'
 	),
 
 );

@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{ trans("common.title") }} - {{ isset($title) ? $title : trans("common.title default") }} </title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('layouts.header.scripts')
 </head>
 <body>
    @include('layouts.header.navigation') 
    @include('layouts.elements.message') 
    
-   @yield('content')
+   @yield('content')        
    @include('layouts.footer.footer')
 </body>

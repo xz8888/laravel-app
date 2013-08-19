@@ -1,18 +1,25 @@
-{{ Form::open(array('url' => 'question-store')) }}
-  <?php
-     
-     echo Form::label('title', Lang::get('question.title'));
-     echo Form::text('title', '', array('placeholder' => trans('question.create')));
+<div class="create-form white-box">
+    <div class="row">
+        <div class="col-lg-9">
+        {{ Form::open(array('url' => 'question-store')) }}
+          <legend> <i class="icon-pencil"></i>{{ trans('question.create') }}</legend>
+          <div class="form-group">
+             {{ Form::label('title', Lang::get('question.create-title')) }}
+             {{ Form::text('title', '', array('placeholder' => trans('question.create'), 'class' => 'form-control')) }}
+          </div>
+          <div class="form-group">
+             {{ Form::label('content', Lang::get('question.content')) }}
+             {{ Form::textarea('content', '', array('class' => 'form-control')) }}
+         </div>
+         <div class="form-group">
+              {{ Form::label('tags', Lang::get('common.tags')) }}
+              {{ Form::text('tags', '', array('class' => 'form-control')) }}
+         </div>
+          {{ Form::token() }}
+          
+          {{ Form::submit(Lang::get('common.submit'), array('class' => 'btn btn-primary')) }}
 
-     echo Form::label('content', Lang::get('question.content'));
-     echo Form::textarea('content');
-
-     echo Form::label('tags', Lang::get('common.tags'));
-     echo Form::text('tags');
-      
-     echo "<br />"; 
-     echo Form::token();
-     echo Form::submit(Lang::get('common.submit'), array('class' => 'btn'));
-  ?>
-
-{{ Form::close() }}
+        {{ Form::close() }}
+        </div>
+    </div>
+</div>

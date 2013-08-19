@@ -1,0 +1,76 @@
+.register-box {
+  margin: 10px 0px;
+  padding: 10px;
+}
+.register-box a {
+  display: block;
+  width: 100%;
+}
+.mini-login {
+  margin: 10px;
+}
+.mini-login .mini-form {
+  margin: 0px;
+}
+.full-screen-module {
+  margin-bottom: 10px;
+}
+.time-stats-module {
+  margin-bottom: 20px;
+}
+.tab-content {
+  margin-top: 10px;
+}
+.time-stats-box {
+  padding: 10px 0px;
+}
+.time-stats-box ul {
+  display: block;
+  overflow: hidden;
+  margin: 10px 0px 0px 10px;
+  padding: 0px;
+}
+.time-stats-box ul li {
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+.time-stats-box ul li > h5 {
+  font-size: 16px;
+  margin: 0px 30px 20px 0px;
+}
+.time-stats-box ul li {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.time-stats-box {
+  border-bottom: 1px solid ;
+}
+.time-stats-box ul li {
+  color: ;
+}
+.question-module ul {
+  margin: 0px;
+  padding: 0px;
+}
+.question-module ul li a {
+  padding: 10px 0px;
+}
+.question-info {
+  margin-bottom: 10px;
+  color: ;
+}
+.question-number {
+  margin-left: 10px;
+}
+.answer {
+  margin-top: 10px;
+}
+.stats-list {
+  margin: 0px;
+  padding: 0px;
+}
+.stats-list li {
+  margin: 0px;
+  padding: 5px 0px;
+}

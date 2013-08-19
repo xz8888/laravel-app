@@ -48,7 +48,7 @@ return array(
             // so the built collection contains valid JS.
             $directory = $collection->directory('assets/javascripts', function($collection)
             {
-                $collection->requireDirectory('coffeescripts')->apply('CoffeeScript');
+                //$collection->requireDirectory('coffeescripts')->apply('CoffeeScript');
                 $collection->requireDirectory();
             });
 
@@ -58,11 +58,11 @@ return array(
          'bootstrap' => function($collection){
             
             $collection->add('bootstrap/css/bootstrap.min.css')->raw();
-            $collection->add('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+            $collection->add('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
             $collection->add('bootstrap/js/bootstrap.min.js')->raw();
 
             //add awesome font directory
-            $collection->add('font-awesome/font-awesome.min.css')->raw();
+            $collection->add('font-awesome/css/font-awesome.min.css')->raw();
         },
 
         'bootstrap-datepicker' => function($collection){
@@ -71,7 +71,7 @@ return array(
         },
 
         'otherlibs' => function($collection){
-            $collection->requireDirectory('css')->raw();
+            //$collection->requireDirectory('css')->raw();
             $collection->requireDirectory('js')->raw();
         }
 

@@ -4,21 +4,52 @@
 <div class="container">
     <div class="content">
         <div class="row-fluid">
-           <div class="span9">
+           <div class="col-lg-9">
               <div class="main wrap">
-                  {{{ $question->title }}}
-                  {{{ $question->body }}}
+                <div class="row margin-10-bottom ">
+                    <div class="col-lg-1">
+                      <div class="label label-orange"><i class="icon-tint"></i> {{ trans('question.title-label') }}</div>
+                    </div>
+                    <div class="col-lg-11 no-padding">
+                      <div class="question-title">
+                         {{ $question->title }}
+                      </div>
+                    </div>
+                </div>
+
+                  <div class="question-content">
+
+                    <!-- Question information row -->
+                    <div class="row question-info"> 
+                       <div class="col-lg-12">
+                          <div>
+                             <ul class="nav nav-pills">
+                                <li>
+                                  <i class="icon-user red-text"> </i>
+                                    <span class="small-text red-text">{{ $question->owner_display_name }}</span> |
+                                  
+                                </li>
+                                <li class="small-text">
+                                  {{ trans('common.created_time') }}: {{ $question->created_at }}
+                                </li>
+                             </ul>
+                          </div>
+                       </div>
+                    </div> 
+                    <div class="content-question">
+                      {{ $question->body }}
+                    </div>
+                  </div>
                  
-                  @foreach ($question->answers as $answer)
-                      <?php var_dump($answer);?>
-                  @endforeach
+                  @include('question.elements.answer') 
+     
                   
                   @include('question.forms.answer_reply_form')
                </div>
 
            </div>
-           <div class="span3">
-              @include('layouts.elements.sidebar_home')
+           <div class="col-lg-3">
+              @include('question.sidebar.question_sidebar')
            </div>
         </div>
     </div>

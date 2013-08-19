@@ -44,7 +44,6 @@ class CreatePosts extends Migration {
         });
 
         Schema::create('post_types', function($table){
-
         	$table->increments('id');
             $table->text('name');
         });

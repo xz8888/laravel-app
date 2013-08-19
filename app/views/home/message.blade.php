@@ -1,4 +1,4 @@
-@layout('layouts.juzi_common')
+@extends('layouts.juzi_common')
 
 @section('content')
 <div class="container">
@@ -8,4 +8,4 @@
 		</div>
 	</div>
 </div>
-@endsection
+@stop

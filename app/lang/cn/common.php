@@ -26,5 +26,9 @@ return array(
 
 	/****** Tags ****/
 	'tags'           => '标签',
-	'submit'         => '提交'
+	'submit'         => '提交', 
+	'days'           => '天',
+	'months'         => '个月',
+	'current_month'  => '本月',
+	'created_time'   => '发布时间'
 );

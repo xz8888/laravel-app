@@ -10,4 +10,6 @@
 | the console gets access to each of the command object instances.
 |
 */
-
+Artisan::add(new SystemCommand());
+Artisan::add(new StatsCommand());
+Artisan::add(new TimeCommand());

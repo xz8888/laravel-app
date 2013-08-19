@@ -84,30 +84,31 @@ Route::filter('csrf', function()
  */
 Route::filter('admin', function(){
 	if (!Sentry::check()){
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
+		Session::flash("messages",array(Lang::get('user.invalid_login')));
 	    return Redirect::to('user/login');
 	}
 	
 	$user = Sentry::user();
 	if(!$user->in_group('admin')){
-		Session::flash("messages",array(Lang::line('user.invalid_login')));
+		Session::flash("messages",array(Lang::get('user.invalid_login')));
 		return Redirect::to('user/login');
 	}
 });
 
-
+//
 Route::filter('user', function(){
-    
+
 	if(!Sentry::check()){
-		Session::flash("messages",array(Lang::get('user.invalid_login')));
-		return Redirect::guest('user/login'); 
+        Session::flash('error_messages', array(Lang::get('user.login_required')));
+		return Redirect::guest('user/login');
 	}
 
 	$user = Sentry::getUser();
     $userGroup = Sentry::getGroupProvider()->findByName('Users');
+    $adminGroup = Sentry::getGroupProvider()->findByName('Administrator');
 
-	if(!$user->inGroup($userGroup)) {
-		Session::flash("messages",array(Lang::get('user.invalid_login')));
+	if(!($user->inGroup($userGroup) || $user->inGroup($adminGroup))) {
+		Session::flash('error_messages', array(Lang::get('user.login_required')));
 		return Redirect::guest('user/login');
 	}
 });

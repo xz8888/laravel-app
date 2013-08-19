@@ -11,6 +11,9 @@ class BaseController extends Controller {
     public function __construct()
     {
         $this->beforeFilter('csrf', array('on' => 'post'));
+
+        //share the log in data
+        View::share('logged_in', Sentry::check());
     }
 
 /**
@@ -21,9 +24,9 @@ class BaseController extends Controller {
 protected function setupLayout()
 {
     if ( ! is_null($this->layout))
-    {   
+      {   
        $this->layout = View::make($this->layout);
-    }
+      }
     }
 
 }

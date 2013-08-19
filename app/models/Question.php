@@ -17,4 +17,9 @@ class Question extends Post {
     public function answers(){
         return $this->hasMany('Answer', 'parent_id');
     }
+
+    /** getting the latest questions **/
+    public static function latest($count = 10){
+        return self::getPosts("Question", 'new', $count);	
+    }
 }

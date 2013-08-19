@@ -32,10 +32,26 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		//pagination applications
-		$applications = DB::table('applications')->orderBy('id', 'desc')->paginate(20);
+		//grabbing the time stats
+	    $time_stats =  DB::table('time_stats')->where('date', date('Y-m-d'))->get();
 
-		return View::make('home.index', array('applications' => $applications));
+	    //getting the lastest 10 questions
+	    $questions = Question::latest();
+
+	    //getting the total number of questions
+	    $total_num_questions = DB::select("SELECT COUNT(*) as total from posts WHERE post_type_id = ?", array(Post::$types['Question']));
+  
+        //getting the stats for current month
+        $current_month = date('n');
+        $stats = DB::select("SELECT SUM(sent_num) as sent_total, SUM(co_num) as cash_out_total, SUM(me_num) as me_total, SUM(pr_num) as pr_total FROM stats WHERE date = ?", array(date('Y-m-d')));
+
+        $stats = get_object_vars($stats[0]);
+        foreach($stats as $i => $sta){
+           if(!$sta)
+           	   $stats[$i] = 0;
+        }
+
+     	return View::make('home.index', array('time_stats' => $time_stats, 'stats' => $stats,'questions' => $questions, 'total_questions' => $total_num_questions[0]->total));
 	}
 	
 	public function message(){

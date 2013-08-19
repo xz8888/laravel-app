@@ -34,7 +34,6 @@ return array(
             $collection->stylesheet('http://bootstrap/css/bootstrap.min.css')->raw();
             $collection->javascript('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')-;
             $collection->javascript('bootstrap/js/bootstrap.min.js')->raw();
-            
            
         },
 

@@ -8,7 +8,7 @@ class Post extends Eloquent {
 
     public static $rules = array();
 
-    protected static $types = array(
+    public static $types = array(
         'Question' => 1,
         'Answer'   => 3
     );

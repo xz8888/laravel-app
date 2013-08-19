@@ -39,6 +39,8 @@ Route::get('/',
 	)
 );
 
+Route::get('message', array('uses' => 'HomeController@message'));
+
 
 /************** Router for questions begin ************/
 Route::resource('question', 'QuestionController', array('only' => array('index', 'show')));

@@ -2,11 +2,13 @@
 return array(
 	'login'         => '登陆',
 	'invalid_login' => '您的用户名和密码不正确',
+	'login_required' => '请先登陆',
 	'label email'   => '邮箱',
 	'label password' => '密码',
 	'label password2' => '密码确认',
 	'label remember' => '记住我',
 	'register promo' => '还没有账户， 赶快',
+	'register welcome' => '加入我们, 分享你的移民过程',
 	'register text' => '注册',
 	'label username' => '用户名',
 	'activiate'      => '点击链接激活你的橘子账户',
