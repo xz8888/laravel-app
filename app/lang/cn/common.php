@@ -30,5 +30,6 @@ return array(
 	'days'           => '天',
 	'months'         => '个月',
 	'current_month'  => '本月',
-	'created_time'   => '发布时间'
+	'created_time'   => '发布时间',
+	'unknown'        => '未知'
 );

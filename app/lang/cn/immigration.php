@@ -37,5 +37,6 @@ return array(
    'medical_receive_time' => '体检表收到时间',
    'permanent_residence_time' => 'PR下来时间',
    'sent_required' => '请填写发送时间',
-   'type_required' => '请填写类别'
+   'type_required' => '请填写类别',
+   'application_time' => '最新移民时间'
 );

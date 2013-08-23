@@ -18,13 +18,15 @@ class Post extends Eloquent {
      * Retrieve the posts
      *
      */
-    public static function getPosts($type = 'Question', $order='new', $count=20){
+    public static function getPosts($type = 'Question', $order='new', $count=20, $paginate = false){
 
        /** TODO: handle invalid type exception **/
-
-
-       $posts = DB::table('posts')->where('post_type_id', self::$types[$type])
+       
+       if(!$paginate)
+           $posts = DB::table('posts')->where('post_type_id', self::$types[$type])
                                       ->orderBy('created_at')->take($count)->get();
+       else
+           $posts = DB::table('posts')->orderBy('updated_at')->paginate($count);
 
        return $posts;
 

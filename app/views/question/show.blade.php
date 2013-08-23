@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <div class="content">
-        <div class="row-fluid">
-           <div class="col-lg-9">
+        <div class="row">
+           <div class="col-md-9">
               <div class="main wrap">
                 <div class="row margin-10-bottom ">
-                    <div class="col-lg-1">
+                    <div class="col-md-1">
                       <div class="label label-orange"><i class="icon-tint"></i> {{ trans('question.title-label') }}</div>
                     </div>
-                    <div class="col-lg-11 no-padding">
+                    <div class="col-md-11 no-padding">
                       <div class="question-title">
                          {{ $question->title }}
                       </div>
@@ -21,7 +21,7 @@
 
                     <!-- Question information row -->
                     <div class="row question-info"> 
-                       <div class="col-lg-12">
+                       <div class="col-md-12">
                           <div>
                              <ul class="nav nav-pills">
                                 <li>
@@ -48,7 +48,7 @@
                </div>
 
            </div>
-           <div class="col-lg-3">
+           <div class="col-md-3">
               @include('question.sidebar.question_sidebar')
            </div>
         </div>

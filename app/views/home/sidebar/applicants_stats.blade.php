@@ -16,10 +16,10 @@ $(document).ready(function(){
    <ul class="stats-list medium-text">
       <li>
       	<div class="row">
-          <div class="col-lg-2">
+          <div class="col-md-2">
           	<span class="stats_popover" data-toggle="popover"  data-placement="left" data-content = "{{ trans('immigration.co_explain') }}" title="{{ trans('immigration.co') }}" >CO:</span>
           </div>
-          <div class="col-lg-6">
+          <div class="col-md-6">
              <span class="red-text"> <?php echo $stats['sent_total']; ?> <i class="icon-male"></i></span> 
           </div>
       	</div>
@@ -27,30 +27,30 @@ $(document).ready(function(){
 
       <li>
        <div class="row">
-          <div class="col-lg-2">
+          <div class="col-md-2">
       	     <span class="stats_popover" data-toggle="tooltip" data-placement="left" data-content = "{{ trans('immigration.fn_explain') }}" title="{{ trans('immigration.fn')  }}" >FN:</span> 
           </div>
-          <div class="col-lg-6">
+          <div class="col-md-6">
       	     <span class="red-text"><?php echo $stats['cash_out_total'];?> <i class="icon-male"></i></span> 
       	  </div>
       </li>
 
       <li>
        <div class="row">
-          <div class="col-lg-2">
+          <div class="col-md-2">
       	     <span class="stats_popover" data-toggle="tooltip" data-placement="left" data-content = "{{ trans('immigration.me_explain') }}" title="{{ trans('immigration.me')  }}" >ME:</span> 
       	  </div>
-          <div class="col-lg-6">
+          <div class="col-md-6">
       	     <span class="red-text"><?php echo $stats['me_total'];?> <i class="icon-male"></i></span> 
       	  </div>
       </li>
 
       <li>
       	<div class="row">
-          <div class="col-lg-2">
+          <div class="col-md-2">
       	     <span class="stats_popover" data-toggle="tooltip" data-placement="left" data-content = "{{ trans('immigration.pr_explain') }}" title="{{ trans('immigration.pr') }}" >PR:</span> 
       	 </div>
-         <div class="col-lg-6">
+         <div class="col-md-6">
       	     <span class="red-text"><?php echo $stats['pr_total'];?> <i class="icon-male"></i></span> 
       	 </div>
       </li>

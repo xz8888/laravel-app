@@ -53,10 +53,14 @@ Route::post('question-reply', array('uses' => 'QuestionController@reply', 'befor
 Route::any('user/login', array('uses' => 'UserController@login', 'before' => 'loggedUser'));
 Route::any('user/register', array('uses' => 'UserController@register'));
 Route::any('user/logout', array('uses' => 'UserController@logout'));
+Route::any('user/activation', array('uses' => 'UserController@activate'));
 Route::get('share', array('uses' => 'ApplicationController@share', 'before' => 'user'));
 Route::post('share', array('uses' => 'ApplicationController@share', 'before' => 'user|csrf'));
+Route::any('my', array('uses' => 'UserController@show', 'before' => 'user'));
 /************** End User Route *********/
 
+/************** Application ***********/
+Route::any('applications', array('uses' => 'ApplicationController@index'));
 
 Route::get('test', function(){
     return View::make('home.hello');

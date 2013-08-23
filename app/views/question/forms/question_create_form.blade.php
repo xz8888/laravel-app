@@ -1,6 +1,6 @@
 <div class="create-form white-box">
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-md-9">
         {{ Form::open(array('url' => 'question-store')) }}
           <legend> <i class="icon-pencil"></i>{{ trans('question.create') }}</legend>
           <div class="form-group">

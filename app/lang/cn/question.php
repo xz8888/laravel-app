@@ -13,5 +13,7 @@ return array(
     'answers' => '答案',
     'answer'  => '我来回答',
     'answer-label' => '答案',
-    'no-answer' => '暂时没有人回复'
+    'no-answer' => '暂时没有人回复',
+    'newest'    => '最新问题',
+    'ask_time'  => '询问时间'
 ); 

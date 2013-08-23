@@ -11,9 +11,9 @@ return array(
 	'register welcome' => '加入我们, 分享你的移民过程',
 	'register text' => '注册',
 	'label username' => '用户名',
-	'activiate'      => '点击链接激活你的橘子账户',
-	'activiate message' =>'谢谢您注册橘子社区',
-	'activaite success' => '注册成功',
+	'activate'      => '点击链接激活你的橘子账户',
+	'activate message' =>'谢谢您注册橘子社区',
+	'activate success' => '注册成功',
 	'activiate code'    => '您的注册信息已经发送到你的邮箱了',
 	'setting'           => '账户设置',
 	'logout'            => '注销'

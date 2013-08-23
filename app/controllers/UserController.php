@@ -38,34 +38,55 @@
                 }
                 catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
                 {
-                    echo 'Login field is required.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
                
                 catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
                 {
-                    echo 'Password field is required.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
                 {
-                    echo 'Wrong password, try again.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
                 {
-                    echo 'User was not found.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
                 {
-                    echo 'User is not activated.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
 
                 // The following is only required if throttle is enabled
                 catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
     			{
-                    echo 'User is suspended.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 {
-                    echo 'User is banned.';
+                   $errors = new stdClass();
+                   $errors->messages = array($e->getMessage());
+                   return Redirect::refresh()
+                      ->withErrors($errors);
                 }
 
     			// log the user in
@@ -75,27 +96,40 @@
                 }
     			catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
                 {
-                    echo 'Login field is required.';
+                   $errors = new stdClass();
+                   $errors->messages = array(array($e->getMessage()));
+                   return Redirect::refresh('login')
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
                 {
-                    echo 'User not activated.';
+                   $errors = new stdClass();
+                   $errors->messages = array(array($e->getMessage()));
+                   return Redirect::refresh('login')
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
                 {
-                    echo 'User not found.';
+                   $errors = new stdClass();
+                   $errors->messages = array(array($e->getMessage()));
+                   return Redirect::refresh('login')
+                      ->withErrors($errors);
                 }
 
                 // Following is only needed if throttle is enabled
                 catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
                 {
-                    $time = $throttle->getSuspensionTime();
-
-                    echo "User is suspended for [$time] minutes.";
+                   $errors = new stdClass();
+                   $errors->messages = array(array($e->getMessage()));
+                   return Redirect::refresh('login')
+                      ->withErrors($errors);
                 }
                 catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 {
-                    echo 'User is banned.';
+                   $errors = new stdClass();
+                   $errors->messages = array(array($e->getMessage()));
+                   return Redirect::refresh('login')
+                      ->withErrors($errors);
                 }
     	
     		    return Redirect::intended('/');  
@@ -105,7 +139,7 @@
     			// issue logging in via Sentry - lets catch the sentry error thrown
     			// store/set and display caught exceptions such as a suspended user with limit attempts feature.
     			$errors = new stdClass();
-    			$errors->messages = array(array($e->getMessage()));
+    			$errors->messages = array($e->getMessage());
     			return Redirect::to("user/login")
     			->withInput()
     			->withErrors($errors);
@@ -127,49 +161,42 @@
     /**
      * Default my home page
      */
-    public function get_my(){
+    public function my(){
     	
+
     	return View::make('users.my');
     }
 
-    /**
-     * Defines the welcome page 
-     */
-    public function get_welcome(){
-    	
-    }
 
-    public function get_activate() {
+    public function activate() {
     	try {
-    		$email = filter_var(urldecode(Input::get('email')), 'FILTER_SANTITIZE_EMAIL');
-    		$hash = filter_var(urldecode(Input::get('hash')), 'FILTER_SANITIZE_STRING');
+    		$email = filter_var(urldecode(Input::get('email')), FILTER_SANITIZE_EMAIL);
+    		$hash = filter_var(urldecode(Input::get('hash')), FILTER_SANITIZE_STRING);
     		
-    		$user = Sentry::user($email);
-    		if ($user['passwords']['activation_hash'] == $hash) {
-    			$update = $user->update(array(
-    					'activated' => 1,
-    			));
-    			if ($update) {
-    				Sentry::force_login($email);
-    				Session::flash("messages",array(Lang::line('user.activiate success')));
-    				return Redirect::to("user/welcome");
-    			}
-    			else {
-    				// something went wrong
-    				throw new Sentry\SentryException("Activation error.");
-    			}
-    		}
-    		else {
-    			// die(var_dump($activate_user));
-    			throw new Sentry\SentryException("Activation error.");
-    		}
+    		$user = Sentry::getUserProvider()->findByLogin($email);
+
+    		if ($user->attemptActivation($hash) ) {
+    			Sentry::loginAndRemember($user);
+    			Session::flash("messages",array(Lang::get('user.activate success')));
+    			return Redirect::to("/");
+            }
     	}
     	catch (Sentry\SentryException $e) {
     		$errors = new stdClass();
     		$errors->messages = array(array($e->getMessage()));
-    		return Redirect::to('user/register')
+    		return Redirect::to('message')
     		->withErrors($errors);
     	}
+        catch (Sentry\UserAlreadyActivatedException $e){
+            $errors = new stdClass();
+            $errors->messages = array(array($e->getMessage()));
+            return Redirect::to('message')->withErrors($errors);
+        }
+        catch (Sentry\Cartalyst\Sentry\Users\UserNotFoundException $e){
+            $errors = new stdClass();
+            $errors->messages = array(array($e->getMessage()));
+            return Redirect::to('message')->withErrors($errors);
+        }
     }
 
 
@@ -210,37 +237,29 @@
         		));
         		
         		if ($user) {
-        			if(App::environment() != 'dev'){
-        				
-        				$email = urlencode($input['email']);
-        				$user = Sentry::user($user['id']);
-        					
-        				$hash = urlencode($user['passwords']['activation_hash']);
-        				// send email with link to activate, only works with none local environment.
-        	
-        				$body =	View::make("Users::users.activationemail",array(
-        						'name'	=> $user->username,
-        						'link'	=> URL::to("/user/activiate")."?email=$email&hash=$hash",
-        						'title'	=> Lang::line('user.activiate'),
-        						'phone'	=> '1-888-544-3062',
-        						'address'	=>	Lang::line('common.address'),
-        				))->render();
-        				$message = Message::to($input['email'])
-        				->from(Config::get('application.juzi_config.contact_address'), Lang::get('common.title'))
-        				->subject('Your BreezeStreet.com Activation.')
-        				->body($body)
-        				->html(true)
-        				->send();
-        			}
-        	
-        			//add the user group
-        		
-                    $userGroup = Sentry::getGroupProvider()->findById(2);
+
+                    /** code here needs to be refactored **/
+        			// if(App::environment() == 'dev')
+        			//     Mail::pretend();
+    					
+    				$activation_code = urlencode($user->getActivationCode());
+                        				// send email with link to activate, only works with none local environment.
+                    Mail::send(array('emails.user.activation', 'emails.user.activation_text'), array('activation_code' => $activation_code, 
+                             'username' => $user->username, 'email' => $user->email), function($message) use ($user) {
+ 
+
+                        $message->to($user->email)
+                                ->subject(Lang::get('email.registration title'))
+                                ->from(Lang::get('email.return email'));
+                    });
+
+        			//add the user group, this needs to be refactored. 
+                    $userGroup = Sentry::getGroupProvider()->findByName('Users');
         			$user->addGroup($userGroup);
-        			
-        			Session::flash("messages",array(Lang::line('user.activiate code')));
+
+        			Session::flash("messages",array(Lang::get('user.activiate code')));
         			 
-        			return Redirect::to("home/message");
+        			return Redirect::to("message");
         		}
         	}
         	catch (Sentry\SentryException $e) {

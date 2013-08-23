@@ -78,7 +78,10 @@ class ApplicationController extends BaseController {
      */
     public function index()
     {
-        //
+        $applications = Application::orderBy('created_at', 'DESC')->paginate(15);
+    
+
+        return View::make('application.index', array('applications' => $applications));
     }
 
     /**

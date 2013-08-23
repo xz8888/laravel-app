@@ -1,6 +1,6 @@
 <div class="row">
   <div class="create-form white-box">
-    <div class="col-lg-12">
+    <div class="col-md-12">
     
         {{ Form::open(array('url' => 'question-reply', 'class' => 'form-horizontal')) }}
       <div class="form-group">
@@ -11,8 +11,10 @@
         {{ Form::label('content', Lang::get('question.answer')) }}
       </div>
      
-      <div class="form-group">
-        {{ Form::textarea('content') }}
+      <div class="row form-group">
+        <div class="col-md-7">
+           {{ Form::textarea('content','',  array('class' => 'form-control', 'rows' => '4')) }}
+        </div>
       </div>
       {{ Form::hidden('question_id', $question->id, array('type' => 'hidden')) }}
 

@@ -16,12 +16,10 @@ class QuestionController extends BaseController {
 
     public function index()
     {
-       
          //get the number of questions
-         $questions = Question::getQuestions('new'); 
-         
-         var_dump($questions);    
-         return View::make('question.index');
+         $questions = Question::getQuestions('new', 20, true);
+
+         return View::make('question.index', array('questions' => $questions));
     }
 
     /**
@@ -126,6 +124,7 @@ class QuestionController extends BaseController {
         $answer->owner_display_name = $user->username;
 
         if($answer->save()){
+            $question->setNumberOfAnswers(++$question->answer_count);
             return Redirect::to('/question/'.$question->id)->with('message', Lang::get('question.success'));
         }
 

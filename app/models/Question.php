@@ -7,7 +7,6 @@ class Question extends Post {
 
     public static $rules = array();
 
-
     /** retrieve the questions **/
     public static function getQuestions($type='new', $count=20){
    
@@ -21,5 +20,10 @@ class Question extends Post {
     /** getting the latest questions **/
     public static function latest($count = 10){
         return self::getPosts("Question", 'new', $count);	
+    }
+
+    public function setNumberOfAnswers($numberOfAnswers){
+       $this->answer_count = $numberOfAnswers;
+       $this->save();
     }
 }

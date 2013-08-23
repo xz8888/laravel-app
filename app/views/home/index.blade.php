@@ -10,7 +10,7 @@
    <div class="container">
        <div class="content">
            <div class="row">
-              <div class="col-lg-8">
+              <div class="col-md-8">
                  <div class="main wrap">
                      <div class="time-stats-module">
           
@@ -23,7 +23,7 @@
                      </div>
                  </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-md-4">
                  @include('home.sidebar.sidebar_home')
               </div>
            </div>

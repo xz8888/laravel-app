@@ -2,6 +2,9 @@
   <div class="navbar navigation-bar-juzi">
 		  <ul class="nav navbar-nav">
 		      <li><a href="/"><i class="icon-home"></i> {{  trans('navigation.top_menu home') }} </a> </li>
+		      <li><a href="/applications"><i class="icon-globe"></i> {{  trans('navigation.top_menu immigration') }} </a> </li>
+              <li><a href="/question"><i class="icon-key"></i> {{  trans('navigation.top_menu question') }} </a> </li>
+
 		  </ul>	
 		  <ul class="nav navbar-nav pull-right">
 			 <?php 
