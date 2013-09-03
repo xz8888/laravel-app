@@ -87,7 +87,7 @@
                    $errors->messages = array($e->getMessage());
                    return Redirect::refresh()
                       ->withErrors($errors);
-                }
+                  }
 
     			// log the user in
                 try{
@@ -162,9 +162,13 @@
      * Default my home page
      */
     public function my(){
-    	
+      //getting user applications 
+      $user = Sentry::getUser(); 
+      //getting user questions
+      $applications = Application::getApplicationsByUser($user->id);
+      $questions = Question::getQuestionsByUser($user->id);
 
-    	return View::make('users.my');
+    	return View::make('users.my', array('user' => $user, 'applications' => $applications, 'questions' => $questions));
     }
 
 

@@ -95,26 +95,26 @@ class QuestionController extends BaseController {
      * 
      */
     public function reply(){
-       
         $inputs = Input::all();
         $inputs = array_map('trim', $inputs);
         $rules = array(
            'title' => 'required|min:3',
            'content' => 'required|min:5'
         );
-       
+        
+        $question = Question::find($inputs['question_id']);
+        $user = Sentry::getUser();
+ 
         $validations = Validator::make($inputs, $rules);
         if($validations->fails())
-            return Redirect::to('question-create')->withInput()
+            return Redirect::to('/question/'.$question->id)->withInput()
                                       ->withErrors($validations);
 
         //purifier the input. title needs to be plain text
         $title = Purifier::clean($inputs['title']);
         $content = Purifier::clean($inputs['content']);
 
-        $question = Question::find($inputs['question_id']);
-        $user = Sentry::getUser();
-
+        
         $answer = new Answer();
         $answer->title = $title;
         $answer->body = $content; 

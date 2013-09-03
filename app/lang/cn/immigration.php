@@ -38,5 +38,6 @@ return array(
    'permanent_residence_time' => 'PR下来时间',
    'sent_required' => '请填写发送时间',
    'type_required' => '请填写类别',
-   'application_time' => '最新移民时间'
+   'application_time' => '最新移民时间',
+   'my_application' => '我的提交'
 );

@@ -22,6 +22,13 @@ class Question extends Post {
         return self::getPosts("Question", 'new', $count);	
     }
 
+    /**
+     * gettin the questions by user 
+     **/
+    public static function getQuestionsByUser($user_id){
+        return self::getPostsByUser('Question', $user_id);
+    }
+
     public function setNumberOfAnswers($numberOfAnswers){
        $this->answer_count = $numberOfAnswers;
        $this->save();

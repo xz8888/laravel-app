@@ -103,10 +103,11 @@ Route::filter('user', function(){
 		return Redirect::guest('user/login');
 	}
 
+
 	$user = Sentry::getUser();
     $userGroup = Sentry::getGroupProvider()->findByName('Users');
     $adminGroup = Sentry::getGroupProvider()->findByName('Administrator');
-
+  
 	if(!($user->inGroup($userGroup) || $user->inGroup($adminGroup))) {
 		Session::flash('error_messages', array(Lang::get('user.login_required')));
 		return Redirect::guest('user/login');

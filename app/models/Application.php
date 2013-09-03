@@ -38,6 +38,12 @@ class Application extends Eloquent {
             return 0;
     }
 
+    public static function getApplicationsByUser($user_id){
+        $applications = Application::where('user_id', '=', $user_id)->get();
+
+        return $applications;
+    }
+
     /**
      * Calculate wait time
      */

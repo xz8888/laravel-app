@@ -5,7 +5,7 @@
 $error_messages = Session::get('error_messages');
 
 if(!empty($error_messages)) {
-	echo "<div class=\"alert alert-error\"><h3><i class='icon-warning-sign'></i>".Lang::get('common.error_message')."</h3>";
+	echo "<div class=\"alert alert-danger\"><h3><i class='icon-warning-sign'></i>".Lang::get('common.error_message')."</h3>";
 	foreach($error_messages as $message){
 	    echo "<p>$message</p>";
 	}
@@ -15,7 +15,7 @@ if(!empty($error_messages)) {
 //here checks the validation message
 $validation_errors = $errors->all();
 if(sizeof($validation_errors) > 0){
-    echo "<div class=\"alert alert-error\"><h3><i class='icon-warning-sign'></i>".Lang::get('common.error_message')."</h3>";
+    echo "<div class=\"alert alert-danger\"><h3><i class='icon-warning-sign'></i>".Lang::get('common.error_message')."</h3>";
 	foreach($validation_errors as $message){
 	    echo "<p>$message</p>";
 	}

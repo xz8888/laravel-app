@@ -12,13 +12,13 @@
 			     $user = Sentry::getUser();
 			  ?>
 			  <li class="dropdown pull-right ">
-			      <a href="/user/my" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-user"></i>{{ $user->username; }}</a>
+			      <a href="/my" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-user"></i> {{ $user->username; }}</a>
 			      <ul class="dropdown-menu" role="menu">
 			          <li>
-			             <a href="/user/edit"><i class="icon-cog"></i> {{ trans('user.setting')}}</a>
+			             <a href="/my"><i class="icon-cog"></i> {{ trans('user.setting')}}</a>
 			          </li>
 			          <li>
-			             <a href="/user/edit"><i class="icon-folder-close"></i> {{ trans('common.my_application') }}</a>
+			             <a href="/my"><i class="icon-folder-close"></i> {{ trans('common.my_application') }}</a>
 			          </li>
 
 			      </ul>

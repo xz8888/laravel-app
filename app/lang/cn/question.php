@@ -15,5 +15,6 @@ return array(
     'answer-label' => '答案',
     'no-answer' => '暂时没有人回复',
     'newest'    => '最新问题',
-    'ask_time'  => '询问时间'
+    'ask_time'  => '询问时间',
+    'my_question' => '我的提问'
 ); 

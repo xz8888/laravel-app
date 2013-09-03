@@ -36,5 +36,12 @@ class Post extends Eloquent {
     	return $this->hasOne('PostType');
     }
 
+    public static function getPostsByUser($type = 'Question', $user_id){
+      $posts = DB::table('posts')->where('post_type_id', self::$types[$type])
+                                 ->where('user_id','=', $user_id)
+                                 ->orderBy('created_at')->get();
+  
+      return $posts;
+    }
 
 }
