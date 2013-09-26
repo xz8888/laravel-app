@@ -1,7 +1,8 @@
 <?php
 
 class BaseController extends Controller {
-
+    const TYPE_QUESTION = 1; 
+    const TYPE_ANSWER = 3;
     /**
 * Initializer.
 *

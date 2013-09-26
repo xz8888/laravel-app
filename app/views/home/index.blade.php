@@ -2,7 +2,8 @@
 
 @section('content')
    @if (!$logged_in)
-      @include('home.elements.login') 
+
+        @include('home.elements.login') 
    @else
 
    @endif

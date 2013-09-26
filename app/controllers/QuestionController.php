@@ -11,8 +11,7 @@ class QuestionController extends BaseController {
      * @return Response
      */
 
-    const TYPE_QUESTION = 1; 
-    const TYPE_ANSWER = 3;
+
 
     public function index()
     {

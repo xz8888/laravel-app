@@ -60,6 +60,24 @@ Route::post('share', array('uses' => 'ApplicationController@share', 'before' => 
 
 /************** End User Route *********/
 
+/************** Admin Route **********/
+Route::group(array('before' => 'admin', 'prefix' => 'admin'), function(){
+    
+    Route::get('/', array('uses' => 'AdminController@index'));
+    
+    Route::get('applications', array('uses' => 'AdminController@applications'));
+    Route::get('applications/add', array('uses' => 'AdminController@applications_add'));
+	Route::get('applications/delete/{id}', array('uses' => 'AdminController@applications_delete'));
+	Route::post('applications-create', array('uses' => 'AdminController@applications_create'));
+	
+	Route::get('questions', array('uses' => 'AdminController@questions'));
+	Route::get('questions/add', array('uses' => 'AdminController@questions_add'));
+	Route::get('questions/delete/{id}', array('uses' => 'AdminController@questions_delete'));
+	Route::post('questions-create', array('uses' => 'AdminController@questions_create'));
+});
+
+/************** End Admin Route ********/
+
 /************** Application ***********/
 Route::any('applications', array('uses' => 'ApplicationController@index'));
 

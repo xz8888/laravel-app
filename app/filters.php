@@ -88,9 +88,11 @@ Route::filter('admin', function(){
 	    return Redirect::to('user/login');
 	}
 	
-	$user = Sentry::user();
-	if(!$user->in_group('admin')){
-		Session::flash("messages",array(Lang::get('user.invalid_login')));
+	$user = Sentry::getUser();
+    $adminGroup = Sentry::getGroupProvider()->findByName('Administrator');
+
+	if(!$user->inGroup($adminGroup)){
+		Session::flash("error_messages",array(Lang::get('user.invalid_login')));
 		return Redirect::to('user/login');
 	}
 });
