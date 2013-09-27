@@ -115,7 +115,7 @@ return array(
 
 		/** additional Service provider **/
 		'Basset\BassetServiceProvider',
-		'Cartalyst\Sentry\SentryserviceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Mews\Purifier\PurifierServiceProvider',
 		'Profiler\ProfilerServiceProvider',
