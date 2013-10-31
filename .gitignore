@@ -1,5 +1,6 @@
 /bootstrap/compiled.php
-/vendor
+public/builds
 composer.phar
+composer.json
 .DS_Store
 *.sublime*
